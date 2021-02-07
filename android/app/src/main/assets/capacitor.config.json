@@ -1,0 +1,14 @@
+{
+  "appId": "com.zentrails.app",
+  "appName": "zentrails",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {},
+  "linuxAndroidStudioPath": "/snap/bin/android-studio"
+}

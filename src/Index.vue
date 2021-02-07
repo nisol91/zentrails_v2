@@ -360,6 +360,9 @@ export default {
 };
 </script>
 <style lang="scss">
+.mainBox {
+  height: 100%;
+}
 .sitemapText {
   font-size: 20px;
   font-weight: bold;
@@ -403,7 +406,7 @@ export default {
 }
 .mTop {
   width: 100%;
-  height: 100px;
+  height: 70px;
   transition: 1s;
   display: flex;
   justify-content: space-around;
@@ -411,6 +414,7 @@ export default {
   position: fixed;
   top: 0px;
   z-index: 9800;
+  background: rgb(141, 141, 141) !important;
   .mTopEl {
     width: 33.3%;
     display: flex;

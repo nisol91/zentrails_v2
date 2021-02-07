@@ -16,7 +16,7 @@
       :center="coordinates"
       :zoom="7"
     >
-      <MglMarker
+      <!-- <MglMarker
         v-for="(event, index) in wineEvents"
         :key="index"
         :coordinates="[
@@ -38,6 +38,14 @@
           slot="marker"
           class="fas fa-wine-bottle markerWine"
         ></i>
+      </MglMarker> -->
+      <MglMarker
+        :coordinates="[
+          myPosition.coords ? myPosition.coords.longitude : 0,
+          myPosition.coords ? myPosition.coords.latitude : 0,
+        ]"
+        color="blue"
+      >
       </MglMarker>
     </MglMap>
   </div>
@@ -52,9 +60,9 @@ export default {
   components: {
     MglMap,
     MglMarker,
-    MglPopup,
+    // MglPopup,
   },
-  props: ["events"],
+  props: ["position"],
   data() {
     return {
       accessToken: null,
@@ -65,12 +73,12 @@ export default {
   },
   methods: {},
   computed: {
-    wineEvents: {
+    myPosition: {
       get() {
         //   nel metodo computed get() posso anche bindare la props a un data in questo modo
         // this.err = this.errorsForm;
         // cosi posso sempre accedere col nome della computed prop (formErrors in questo caso)
-        return this.events;
+        return this.position;
       },
       set() {},
     },
@@ -102,7 +110,7 @@ export default {
 
 <style scoped>
 #map {
-  height: 400px;
+  height: 100%;
   width: 100%;
 }
 .markerWine {

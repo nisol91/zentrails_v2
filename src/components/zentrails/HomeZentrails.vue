@@ -1,12 +1,35 @@
 <template>
-  <div class="geo">
-    <h1>Geolocation</h1>
-    <p>Your location is:</p>
-    <p>Latitude: {{ loc.coords.latitude }}</p>
-    <p>Longitude: {{ loc.coords.longitude }}</p>
+  <div class="zentrailsTabsBox">
+    <q-tab-panels v-model="tab" animated>
+      <q-tab-panel name="map">
+        <div class="mapBox">
+          <i class="" @click="getCurrentPosition">Get Current Location</i>
+          <mapbox-map :position="loc"></mapbox-map>
+        </div>
+      </q-tab-panel>
 
-    <button @click="getCurrentPosition">Get Current Location</button>
-    <mapbox-map></mapbox-map>
+      <q-tab-panel name="mapSelect">
+        <div class="selectMapsBox">Select your maps</div>
+      </q-tab-panel>
+
+      <q-tab-panel name="tracks">
+        <div class="tracksBox">Tracks</div>
+      </q-tab-panel>
+    </q-tab-panels>
+
+    <q-separator />
+
+    <q-tabs
+      v-model="tab"
+      dense
+      class="bg-grey-3"
+      align="justify"
+      narrow-indicator
+    >
+      <q-tab name="map" label="Map" />
+      <q-tab name="mapSelect" label="MapSelect" />
+      <q-tab name="tracks" label="Tracks" />
+    </q-tabs>
   </div>
 </template>
 
@@ -22,6 +45,7 @@ export default {
           longitude: 1,
         },
       },
+      tab: "map",
     };
   },
   created() {
@@ -32,17 +56,39 @@ export default {
       const { Geolocation } = Plugins;
       const loc = await Geolocation.getCurrentPosition();
       this.loc = loc;
+      console.log(loc);
     },
   },
 };
 </script>
 <style lang="scss">
-.geo {
+.zentrailsTabsBox {
+  width: 100%;
+  height: 100%;
+  padding-top: 80px;
+}
+.mapBox {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  padding-top: 200px;
   flex-direction: column;
+  width: 100%;
+  height: 79vh;
+}
+.selectMapsBox {
+  height: 79vh;
+}
+.tracksBox {
+  height: 79vh;
+}
+.q-tab-panels {
+  // height: 100% !important;
+}
+.q-tab-panel {
+  padding: 0px 15px !important;
+  // height: 100% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

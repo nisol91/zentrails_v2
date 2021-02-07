@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <div style="height: 350px">
-      <div class="info" style="height: 15%">
+  <div class="leafletBox">
+    <div style="height: 100%">
+      <!-- <div class="info" style="height: 15%">
         <span>Center: {{ center }}</span>
         <span>Zoom: {{ zoom }}</span>
         <span>Bounds: {{ bounds }}</span>
-      </div>
+      </div> -->
       <l-map
-        style="height: 80%; width: 100%"
+        style="height: 100%; width: 100%"
         :zoom="zoom"
         :center="center"
         @update:zoom="zoomUpdated"
@@ -52,4 +52,10 @@ export default {
   },
 };
 </script>
+<style lang="scss">
+.leafletBox {
+  width: 100%;
+  height: 100%;
+}
+</style>
 

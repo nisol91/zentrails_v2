@@ -64,8 +64,8 @@ export default {
 <style lang="scss">
 .zentrailsTabsBox {
   width: 100%;
-  height: 100%;
-  padding-top: 80px;
+  height: calc(100% - 40px);
+  padding-top: 70px;
 }
 .mapBox {
   display: flex;
@@ -73,16 +73,16 @@ export default {
   align-items: center;
   flex-direction: column;
   width: 100%;
-  height: 79vh;
+  height: 100%;
 }
 .selectMapsBox {
-  height: 79vh;
+  height: 100%;
 }
 .tracksBox {
-  height: 79vh;
+  height: 100%;
 }
 .q-tab-panels {
-  // height: 100% !important;
+  height: 100% !important;
 }
 .q-tab-panel {
   padding: 0px 0px !important;

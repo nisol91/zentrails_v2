@@ -3,7 +3,6 @@
     <q-tab-panels v-model="tab" animated>
       <q-tab-panel name="map">
         <div class="mapBox">
-          <i class="" @click="getCurrentPosition">Get Current Location</i>
           <leaflet-map :position="loc"></leaflet-map>
         </div>
       </q-tab-panel>
@@ -34,30 +33,15 @@
 </template>
 
 <script>
-import { Plugins } from "@capacitor/core";
 export default {
   name: "App",
   data() {
     return {
-      loc: {
-        coords: {
-          latitude: 1,
-          longitude: 1,
-        },
-      },
       tab: "map",
     };
   },
   created() {
     console.log("created");
-  },
-  methods: {
-    async getCurrentPosition() {
-      const { Geolocation } = Plugins;
-      const loc = await Geolocation.getCurrentPosition();
-      this.loc = loc;
-      console.log(loc);
-    },
   },
 };
 </script>

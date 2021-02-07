@@ -1,5 +1,7 @@
 <template>
   <div class="leafletBox">
+    <i class="getPosBtn" @click="getCurrentPosition">Get Current Location</i>
+
     <div style="height: 100%">
       <!-- <div class="info" style="height: 15%">
         <span>Center: {{ center }}</span>
@@ -23,6 +25,7 @@
 import L from "leaflet";
 import { LMap, LTileLayer } from "vue2-leaflet";
 import "leaflet/dist/leaflet.css";
+import { Plugins } from "@capacitor/core";
 
 export default {
   name: "MainMap",
@@ -37,9 +40,21 @@ export default {
       zoom: 3,
       center: [47.41322, -1.219482],
       bounds: null,
+      loc: {
+        coords: {
+          latitude: 1,
+          longitude: 1,
+        },
+      },
     };
   },
   methods: {
+    async getCurrentPosition() {
+      const { Geolocation } = Plugins;
+      const loc = await Geolocation.getCurrentPosition();
+      this.loc = loc;
+      console.log(loc);
+    },
     zoomUpdated(zoom) {
       this.zoom = zoom;
     },

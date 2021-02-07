@@ -4,7 +4,7 @@
       <q-tab-panel name="map">
         <div class="mapBox">
           <i class="" @click="getCurrentPosition">Get Current Location</i>
-          <mapbox-map :position="loc"></mapbox-map>
+          <leaflet-map :position="loc"></leaflet-map>
         </div>
       </q-tab-panel>
 
@@ -85,7 +85,7 @@ export default {
   // height: 100% !important;
 }
 .q-tab-panel {
-  padding: 0px 15px !important;
+  padding: 0px 0px !important;
   // height: 100% !important;
   display: flex;
   justify-content: center;
